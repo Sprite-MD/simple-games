@@ -10,13 +10,15 @@ board = create_board()
 
 play = True
 
+def connect4(arr):
+    for row in range(6):
 
 while play:
 
     player_1 = int(input('Please pick a column: 1 - 7 \n'))
     for row in range(5, 0, -1):
         if board[row][player_1] == 0:
-            board[row][player_1] = 1
+            board[row][player_1] = 'X'
             break
     print(board)
 
@@ -25,7 +27,7 @@ while play:
     player_2 = int(input('Please pick a column: 1 - 7 \n'))
     for row in range(5, -1, -1):
         if board[row][player_1] == 0:
-            board[row][player_1] = 2
+            board[row][player_1] = 'O'
             break
     print(board)
 
