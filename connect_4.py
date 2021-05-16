@@ -1,10 +1,11 @@
 '''
 Connect Four Game with a 6x7 grid.
 
-To-do:
+To-do/ideas:
 Fix validation for player 2
 Ask to reset game when game over
-
+Keep score for each player wins
+Add player v. computer mode
 
 
 '''
