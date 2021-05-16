@@ -1,4 +1,14 @@
-# Simple Implementation of hangman game
+'''
+Hangman game
+
+Words are randomly generated from a library. Players have to 
+guess letters until they either get the word correct or run
+out of chances. 
+
+To-do:
+
+
+'''
 
 from random_word import RandomWords
 
