@@ -15,41 +15,33 @@ def connect4(board):
     count1 = 0
     count2 = 0
     # Check horizontal
-    while count1 != 4 or count2 != 4:
-        for row in range(6):
-            for column in range(7):
-                if board[row][column] == 1:
-                    count1 += 1
-                    count2 = 0
-                    if count1 == 4:
-                        return True
-                elif board[row][column] == 2:
-                    count2 += 1
-                    count1 = 0
-                    if count2 == 4:
-                        return True
+    for row in range(6):
+        for column in range(3):
+            if board[row][column] == board[row][column + 1] == board[row][column + 2] == board[row][column+3] and board[row][column] != 0:
+                return board[row][column]
     
     # Check Vertical
-    while count1 != 4 or count2 != 4:
-        for column in range(6):
-            for row in range(7):
-                if board[row][column] == 1:
-                    count1 += 1
-                    count2 = 0
-                    if count1 == 4:
-                        return True
-                elif board[row][column] == 2:
-                    count2 += 1
-                    count1 = 0
-                    if count2 == 4:
-                        return True
+    for column in range(7):
+        for row in range(3):
+            if board[row][column] == board[row + 1][column] == board[row + 2][column] == board[row + 3][column] and board[row][column] != 0:
+                return board[row][column]
 
+    # Check Top-Left to Bot-Right
+    for row in range(3):
+        for column in range(4):
+            if board[row][column] == board[row + 1][column + 1] == board[row + 2][column + 2] == board[row + 3][column + 3] and board[row][column] != 0:
+                return board[row][column]
 
+    # Check Bot-Left to Top-Right
+    for row in range(5, 2, -1):
+        for column in range(3):
+            if board[row][column] == board[row - 1][column + 1] == board[row - 2][column + 2] == board[row - 3][column + 3] and board[row][column] != 0:
+                return board[row][column]
 
 while play:
     
 
-    player_1 = int(input('Please pick a column: 1 - 7 \n'))
+    player_1 = int(input('(Player 1) Please pick a column: 1 - 7 \n'))
     for row in range(5, 0, -1):
         if board[row][player_1 - 1] == 0:
             board[row][player_1 - 1] = 1
@@ -57,29 +49,18 @@ while play:
             break
 
     print(board)
-
-    if connect4(board) == True:
-        print('Congrats! Player 1 Wins!')
+    if connect4(board) == 1:
+        print('Congrats! Player 1 wins!')
         break
 
-
-    
-
-
-
-
-
-    player_2 = int(input('Please pick a column: 1 - 7 \n'))
+    player_2 = int(input('(Player 2) Please pick a column: 1 - 7 \n'))
     for row in range(5, -1, -1):
         if board[row][player_2 - 1] == 0:
             board[row][player_2 - 1] = 2
             break
 
     print(board)
-
-    if connect4(board) == True:
-        print('Congrats! Player 2 Wins!')
+    if connect4(board) == 2:
+        print('Congrats! Player 2 wins!')
         break
-    
-
 
