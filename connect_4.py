@@ -2,11 +2,10 @@
 Connect Four Game with a 6x7 grid.
 
 To-do/ideas:
-Fix validation for player 2
 Ask to reset game when game over
 Keep score for each player wins
 Add player v. computer mode
-
+Prettier board
 
 '''
 
@@ -71,15 +70,17 @@ while play:
         print('Congrats! Player 1 wins!')
         break
 
-    try:
-        player_2 = int(input('(Player 2) Please pick a column: 1 - 7 \n'))
-        for row in range(5, -1, -1):
-            if board[row][player_2 - 1] == 0:
-                board[row][player_2 - 1] = 2
-                break
-    except:
-        validate(player_2)
-        continue            # Need this to return back to player_2 not player_1
+    while True:
+        try:
+            player_2 = int(input('(Player 2) Please pick a column: 1 - 7 \n'))
+            for row in range(5, -1, -1):
+                if board[row][player_2 - 1] == 0:
+                    board[row][player_2 - 1] = 2
+                    break
+        except:
+            validate(player_2)
+            continue
+        break            
 
     print(board)
     if connect4(board) == 2:
